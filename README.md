@@ -80,7 +80,7 @@ There are 5 objects you can use in this header:
      ```cpp
      std::string text_reusable_1 = "hello world";
      std::string text_reusable_2 = "goodbye world";
-     TextTools::CharModMap editorRules = {  // Ensure to delete this later
+     TextTools::CharModMap editorRules = {  // Ensure to deallocate this later
         {'o', '0'},
         {'e', '3'},
         {'l', std::nullopt}  // remove 'l'
@@ -105,7 +105,7 @@ There are 5 objects you can use in this header:
    - **Usage**: (relaxed style)
      ```cpp
      std::string text_once_replace = "apple banana orange";
-     TextTools::ReplacementMap rules_replace = {
+     TextTools::ReplacementMap rules_replace = {  // Ensure to deallocate this later
         {'a', '@'},
         {'n', '#'}
      };
