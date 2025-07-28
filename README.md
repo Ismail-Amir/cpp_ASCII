@@ -111,6 +111,14 @@ There are 5 objects you can use in this header:
      };
      TextTools::ascii_replace_once(text_once_replace, rules_replace);
      ```
+3. `TextTools::trim_all` (Function)
+   - **Purpose**: Normalizes the amount of spaces new line characters from a string, also removes the heading and trailing space and new line characters.
+   - **Features**: Uses a precompiled lookup table containing the group of unwanted characters, also modified the string in place. If the string is empty, it skips the whole process, combine these all together and you get a steller performance.
+   - **Usage**:  
+     ```cpp
+     std::string text_trim_1 = "   Hello    World \n\n    ";
+     TextTools::trim_all(text_trim_1); // becomes "Hello World"
+     ```
 
 ## Comparison of Public Objects and Their Usage
 
