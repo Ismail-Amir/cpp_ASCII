@@ -1,6 +1,9 @@
 # TextTools: Lightweight C++ ASCII Text Manipulation
 
-`TextTools` is a header-only C++ module providing efficient, in-place ASCII string manipulation utilities. It offers functionalities for character replacement, character removal, and comprehensive whitespace trimming and normalization, optimized for performance through the use of lookup tables.
+C++ standard library does not have a direct way to modify strings if you have a set of characters to be modified. The choice you have is to use something like `std::replace(str.begin(), str.end(), 'o', '0');` multiple times which is slow and expensive!
+
+**Introducing TextTools**  
+`TextTools` is a header-only C++ module providing a lightning-fast, in-place ASCII string manipulation utilities. It offers functionalities for character replacement, character removal, and comprehensive whitespace trimming and normalization, optimized for performance through the use of lookup tables.
 
 ## Features
 
