@@ -61,11 +61,11 @@ There are 5 objects you can use in this header:
 2. `TextTools::ReusableASCIICharEditor` (Class)  
    - **Purpose**: Built for repeated calls or tight loops where character replacment or removal is needed on multiple string variables. This avoids load of creating the lookup table as it depends on a ready made one before it could be used.
    - **Features**: Uses a single-pass function, skip the processing if the input map `TextTools::CharModMap` is empty (in case of empty string), uses O(1) algorithm.
-   - **Usage**:  
+   - **Usage**:  (relaxed style)
      ```cpp
      std::string text_reusable_1 = "hello world";
      std::string text_reusable_2 = "goodbye world";
-     TextTools::CharModMap editorRules = {
+     TextTools::CharModMap editorRules = {  // Ensure to delete this later
         {'o', '0'},
         {'e', '3'},
         {'l', std::nullopt}  // remove 'l'
@@ -74,7 +74,21 @@ There are 5 objects you can use in this header:
      editor.apply(text_reusable_1); // This is where the magic happens!
      editor.apply(text_reusable_2); // same set of replacments or deletion will be applied here on the other varaible without the recreation of the lookup table
      ```
+   - **Usage**:  (fast style)
+     ```cpp
+     std::string text_reusable_1 = "hello world";
+     std::string text_reusable_2 = "goodbye world";
+     TextTools::ReusableASCIICharEditor editor(TextTools::CharModMap{ // Now the modifier class is created independent of the function and ready to be used repeatedly
+        {'o', '0'},
+        {'e', '3'},
+        {'l', std::nullopt} // remove 'l'
+     });
+     editor.apply(text_reusable_1); // This is where the magic happens!
+     editor.apply(text_reusable_2); // same set of replacments or deletion will be applied here on the other varaible without the recreation of the lookup table
+     ```
 
+3. `TextTools::ascii_replace_once` (Function)  
+   - **Purpose**: Situable for one-time or few calls to replace a set of `char` without removing any `char` from the input string
 
 ## Comparison of Public Objects and Their Usage
 
