@@ -88,8 +88,8 @@ There are 5 objects you can use in this header:
      ```
 
 3. `TextTools::ascii_replace_once` (Function)  
-   - **Purpose**: Situable for one-time or few calls to replace a set of `char` without removing any `char` from the input string. It creats it own lookup map (of type `TextTools::ReplacementMap`)
-   - **Features**: Skips the whole process if the input string is empty, uses O(1) algorithm for lookup
+   - **Purpose**: Situable for one-time or few calls to replace a set of `char` without removing any `char` from the input string. It creats its own lookup map (of type `TextTools::ReplacementMap`)
+   - **Features**: Skips the whole process if the input string is empty, uses O(1) algorithm for lookup, uses one-pass loop, modifies the string in place (no copies)
    - **Notes**: For repeated usages (e.g. tight loops), use `TextTools::ReusableCharReplacer` class
    - **Usage**: (fast style)
      ```cpp
@@ -106,6 +106,7 @@ There are 5 objects you can use in this header:
         {'a', '@'},
         {'n', '#'}
      };
+     TextTools::ascii_replace_once(text_once_replace, rules_replace);
      ```
 
 ## Comparison of Public Objects and Their Usage
